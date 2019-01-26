@@ -31,9 +31,15 @@ exports.handler = async ( event, context, callback ) => {
 
   var response = {
     "statusCode": 501,
-    "body": "{'nextUp': ''}",
+    "body": "{'nextType': '', 'nextCollection': ''}",
     "isBase64Encoded": false
   };
+
+  const nextPickup = await page.evaluate( () => {
+    let listHdrs = Array.from( document.querySelectorAll('#calendarData p.listinghdr') );
+    let pickupDates = listHdrs.map( function(item,index) { return item.innerHTML; });
+    return pickupDates;
+  });
 
   const nextUp = await page.evaluate( () => {
     let imgElements = Array.from( document.querySelectorAll('#calendarData img') );
@@ -43,7 +49,7 @@ exports.handler = async ( event, context, callback ) => {
     return nexttitle;
   });
     response.statusCode = "200";
-    response.body = '{"nextUp": "' + nextUp[1] + '"}';
+    response.body = '{"nextType": "' + nextUp[1] + '", "nextCollection": "' + nextPickup[1] + '"}';
     callback(null, response);
   } catch (err) {
     response.body.errMsg = err;
