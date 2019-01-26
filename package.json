@@ -1,0 +1,23 @@
+{
+  "name": "toronto-garbage-schedule",
+  "version": "1.0.0",
+  "description": "scrape value for next collection date",
+  "main": "puppeteer-grab.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1adam/toronto-garbage-collection.git"
+  },
+  "author": "1adam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1adam/toronto-garbage-collection/issues"
+  },
+  "homepage": "https://github.com/1adam/toronto-garbage-collection#readme",
+  "dependencies": {
+    "chrome-aws-lambda": "^1.11.2",
+    "puppeteer-core": "^1.11.0"
+  }
+}
